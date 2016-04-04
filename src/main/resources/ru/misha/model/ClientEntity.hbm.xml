@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+
+<hibernate-mapping>
+    <class name="ru.misha.model.Client" table="clients">
+        <meta attribute="class-description">
+            This class contains the user detail.
+        </meta>
+        <id name="uid" type="int" column="uid">
+            <generator class="identity"/>
+        </id>
+        <property name="lastname" column="lastname" type="string"/>
+        <property name="firstname" column="firstname" type="string"/>
+        <property name="middlename" column="middlename" type="string"/>
+
+        <many-to-one name="city" column="city" class="ru.misha.model.City" cascade="lock" lazy="false"/>
+        <many-to-one name="street" column="street" class="ru.misha.model.Street" cascade="lock" lazy="false"/>
+
+        <property name="bithday" column="bithday" type="java.util.Date"/>
+        <property name="phonenum" column="phonenum" type="string"/>
+    </class>
+</hibernate-mapping>
